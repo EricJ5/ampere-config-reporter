@@ -160,26 +160,6 @@ func (c *PmuCollector) Collect() (map[string]interface{}, error) {
 			slog.Debug("Instructions PMU counter collected successfully", "cycles", insns)
 
 		}
-		// cyclesCmd := exec.Command("sudo", perfPath, "stat", "-e", "cycles")
-		// cycles, err := cyclesCmd.Output()
-		// if err != nil {
-		// 	slog.Debug("Unable to collect cycles counter", "error", err)
-		// 	data["cyclesCounter"] = "No"
-		// }
-		// slog.Debug("cycles counter", "raw", cycles)
-		// data["cyclesCounter"] = "Yes"
-		// pmuser := read_pmuserenr_el0()
-		// pmcr := read_pmcr_el0()
-		// pmcnten := read_pmcntenset_el0()
-		// slog.Debug("PMUSERENR_EL0", "status", ReadPMUSERENR_EL0())
-		// slog.Debug("PMCR_EL0", "status", ReadPMCR_EL0())
-		// slog.Debug("PMCNTENSET_EL0", "status", ReadPMCNTENSET_EL0())
-
-		// en := (pmuser & 0x1) != 0
-		// cr := (pmuser & (1 << 2)) != 0
-		// er := (pmuser & (1 << 3)) != 0
-
-		// fmt.Printf("EL0 PMU access: EN=%v CR(cycles-read)=%v ER(events-read)=%v\n", en, cr, er)
 
 	}
 

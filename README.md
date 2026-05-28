@@ -32,20 +32,20 @@ The tool is organized into modular collectors that gather following information:
 -   **Network-info**: NIC interfaces, ipv4/v6 addresses, speed, state
 
 ## Getting ACR
-Pre-built ACR release is available in repository's [Release](https://github.com/AmpereComputing/ampere-config-reporter/releases/download/v1.0/acr). Download and start using ACR
+Pre-built ACR release is available in repository's [Release](https://github.com/AmpereComputing/ampere-config-reporter/releases/download/v1.0/acr-linux-arm64). Download and start using ACR
 
 ### Usage
 The tool requires root privileges for some collectors to access detailed hardware information (e.g., from `dmidecode`, `ethtool`). It's recommended to run it with `sudo`
 
 ```bash
 # Get a report in the default JSON format(acr.json)
-sudo ./acr
+sudo ./acr-linux-arm64
 
 # Get a CSV report
-sudo ./acr -format=csv
+sudo ./acr-linux-arm64 -format=csv
 
-# Save a report as custom JSON file
-sudo ./acr -format=json -o acr_out.json
+# Save a report as custom HTML file
+sudo ./acr-linux-arm64 -format=html -o acr_out.html
 ```
 
 ## Installation/Dev environment setup
@@ -59,13 +59,8 @@ You need a working Go environment (version 1.18 or newer) to build the tool from
 1.  Clone the repository
 
 2.  Build the binary:
-    ```bash
-    go build -o acr .
-    ```
 
-### Cross-compiling Linux binaries
-
-The repository includes a small `Makefile` that builds static Linux binaries with `CGO_ENABLED=0`.
+The repository includes a `Makefile` that builds static Linux binaries with `CGO_ENABLED=0`.
 
 ```bash
 # Build for the current host architecture (linux/amd64 on most x86_64 systems)
