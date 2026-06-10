@@ -2,8 +2,8 @@ package main
 
 import (
 	_ "embed"
-	"flag"
 	"fmt"
+	"github.com/spf13/pflag"
 	"log/slog"
 	"os"
 	"strings"
@@ -53,7 +53,7 @@ func resolveOutputFile(format, outFile string, outFileSet bool) string {
 
 func isFlagSet(name string) bool {
 	var found bool
-	flag.Visit(func(f *flag.Flag) {
+	pflag.Visit(func(f *pflag.Flag) {
 		if f.Name == name {
 			found = true
 		}
@@ -62,13 +62,12 @@ func isFlagSet(name string) bool {
 }
 
 func main() {
-	outFile := flag.String("o", "acr.json", "output file to write the report to (default: acr.<format>)")
-	format := flag.String("format", "json", "ouput format: json, csv, text or html")
-	debugFlag := flag.Bool("debug", false, "set debug logs")
-	showVersion := flag.Bool("v", false, "show tool version")
-	flag.BoolVar(showVersion, "version", false, "print version")
-	flag.Parse()
-	*outFile = resolveOutputFile(*format, *outFile, isFlagSet("o"))
+	outFile := pflag.StringP("output", "o", "acr.json", "output file to write the report to (default: acr.<format>)")
+	format := pflag.StringP("format", "f", "json", "ouput format: json, csv, text or html")
+	debugFlag := pflag.BoolP("debug", "d", false, "set debug logs")
+	showVersion := pflag.BoolP("version", "v", false, "show tool version")
+	pflag.Parse()
+	*outFile = resolveOutputFile(*format, *outFile, isFlagSet("output"))
 	var logLevel slog.LevelVar
 	if *debugFlag {
 		logLevel.Set(slog.LevelDebug)

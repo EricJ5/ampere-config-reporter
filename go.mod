@@ -7,7 +7,8 @@ toolchain go1.24.12
 require (
 	github.com/fsouza/go-dockerclient v1.12.3
 	github.com/shirou/gopsutil/v3 v3.24.5
-
+	github.com/spf13/pflag v1.0.10
+	golang.org/x/sys v0.38.0
 )
 
 require (
@@ -34,5 +35,4 @@ require (
 	github.com/sirupsen/logrus v1.9.3 // indirect
 	github.com/stretchr/testify v1.10.0 // indirect
 	github.com/yusufpapurcu/wmi v1.2.4 // indirect
-	golang.org/x/sys v0.38.0 // indirect
 )
