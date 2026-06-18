@@ -63,7 +63,7 @@ func isFlagSet(name string) bool {
 
 func main() {
 	outFile := pflag.StringP("output", "o", "acr.json", "output file to write the report to (default: acr.<format>)")
-	format := pflag.StringP("format", "f", "json", "ouput format: json, csv, text or html")
+	format := pflag.StringP("format", "f", "json", "output format: json, csv, text or html")
 	debugFlag := pflag.BoolP("debug", "d", false, "set debug logs")
 	showVersion := pflag.BoolP("version", "v", false, "show tool version")
 	pflag.Parse()
